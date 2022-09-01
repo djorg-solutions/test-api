@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Test.Application.Dto
 {
-    public class ReportRelatorioResultDto
+    public class ReportResultDto
     {
-        public ReportRelatorioResultDto()
+        public ReportResultDto()
         {
             profits = new List<ProfitDto>();
         }

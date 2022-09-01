@@ -18,14 +18,14 @@ namespace Test.Application.src
             _uow = unitOfWork;
         }
 
-        public IEnumerable<ReportRelatorioResultDto> RelatorioReport(ReportFormDto model)
+        public IEnumerable<ReportResultDto> GetReport(ReportFormDto model)
         {
-            List<ReportRelatorioResultDto> list = new List<ReportRelatorioResultDto>();
+            List<ReportResultDto> list = new List<ReportResultDto>();
             foreach (var item in model.consultants)
             {
                 CaoUsuario user = _uow.UsuarioRepository.Queryable().Where(d => d.NoUsuario == item).First();
                
-                ReportRelatorioResultDto consultant = new ReportRelatorioResultDto();
+                ReportResultDto consultant = new ReportResultDto();
                 consultant.consultant = user.NoUsuario;
 
                 DateTime date = model.startDate;
@@ -56,16 +56,6 @@ namespace Test.Application.src
                 list.Add(consultant);
             }
             return list;
-        }
-
-        public ReportGraficaResultDto GraficaReport(ReportFormDto model)
-        {
-            return new ReportGraficaResultDto();
-        }
-
-        public ReportPizzaResultDto PizzaReport(ReportFormDto model)
-        {
-            return new ReportPizzaResultDto();
         }
 
         private string getPeriod(int month, int year)

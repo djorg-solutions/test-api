@@ -24,37 +24,13 @@ namespace Test.WebApi.Controllers
         }
 
         /// <summary>
-        /// Report Relatorio
+        /// Report
         /// </summary>
         [HttpPost]
-        [Route("relatorio")]
-        public IEnumerable<ReportRelatorioResultDto> PostRelatorio([FromBody] ReportFormDto model)
+        public IEnumerable<ReportResultDto> PostRelatorio([FromBody] ReportFormDto model)
         {
-            return _reportService.RelatorioReport(model);
+            return _reportService.GetReport(model);
 
         }
-
-        /// <summary>
-        /// Report Grafica
-        /// </summary>
-        [HttpPost]
-        [Route("grafica")]
-        public ReportGraficaResultDto PostGrafica([FromBody] ReportFormDto model)
-        {
-            return _reportService.GraficaReport(model);
-
-        }
-
-        /// <summary>
-        /// Report Pizza
-        /// </summary>
-        [HttpPost]
-        [Route("pizza")]
-        public ReportPizzaResultDto PostPizza([FromBody] ReportFormDto model)
-        {
-            return _reportService.PizzaReport(model);
-
-        }
-
     }
 }

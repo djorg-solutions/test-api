@@ -10,8 +10,6 @@ namespace Test.Application.Services
 {
     public interface IReportService
     {
-        IEnumerable<ReportRelatorioResultDto> RelatorioReport(ReportFormDto model);
-        ReportGraficaResultDto GraficaReport(ReportFormDto model);
-        ReportPizzaResultDto PizzaReport(ReportFormDto model);
+        IEnumerable<ReportResultDto> GetReport(ReportFormDto model);
     }
 }
