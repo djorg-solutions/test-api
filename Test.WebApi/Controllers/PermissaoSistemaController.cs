@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Test.Application.Services;
 using Test.Domain.Models;
+using Test.Application.Dto;
 
 namespace Test.WebApi.Controllers
 {
@@ -27,6 +28,17 @@ namespace Test.WebApi.Controllers
         public IEnumerable<PermissaoSistema> Get()
         {
             return _permissaoSistemaService.GetAll();
+        }
+
+
+        /// <summary>
+        /// Get consultants
+        /// </summary>
+        [HttpGet]
+        [Route("consultants")]
+        public IEnumerable<UsuarioDto> GetConsultants()
+        {
+            return _permissaoSistemaService.GetConsultants();
         }
 
     }

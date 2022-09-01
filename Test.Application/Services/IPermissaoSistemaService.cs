@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Test.Application.Dto;
 using Test.Domain.Models;
 
 namespace Test.Application.Services
@@ -11,5 +12,6 @@ namespace Test.Application.Services
     {
         IEnumerable<PermissaoSistema> GetAll();
         PermissaoSistema FindById(int? id);
+        IEnumerable<UsuarioDto> GetConsultants();
     }
 }

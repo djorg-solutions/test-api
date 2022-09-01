@@ -22,6 +22,11 @@ namespace Test.Domain.Repository
         }
 
         Repository<PermissaoSistema> permissaoSistemaRepository;
+        Repository<CaoUsuario> usuarioRepository;
+        Repository<CaoFatura> facturaRepository;
+        Repository<CaoO> osRepository;
+        Repository<CaoSalario> salarioRepository;
+
         public Repository<PermissaoSistema> PermissaoSistemaRepository
         {
             get
@@ -33,6 +38,53 @@ namespace Test.Domain.Repository
                 return this.permissaoSistemaRepository;
             }
         }
+
+        public Repository<CaoUsuario> UsuarioRepository
+        {
+            get
+            {
+                if (this.usuarioRepository == null)
+                {
+                    this.usuarioRepository = new Repository<CaoUsuario>(this._testcontext);
+                }
+                return this.usuarioRepository;
+            }
+        }
+        public Repository<CaoFatura> FacturaRepository
+        {
+            get
+            {
+                if (this.facturaRepository == null)
+                {
+                    this.facturaRepository = new Repository<CaoFatura>(this._testcontext);
+                }
+                return this.facturaRepository;
+            }
+        }
+        public Repository<CaoO> OSRepository
+        {
+            get
+            {
+                if (this.osRepository == null)
+                {
+                    this.osRepository = new Repository<CaoO>(this._testcontext);
+                }
+                return this.osRepository;
+            }
+        }
+
+        public Repository<CaoSalario> SalarioRepository
+        {
+            get
+            {
+                if (this.salarioRepository == null)
+                {
+                    this.salarioRepository = new Repository<CaoSalario>(this._testcontext);
+                }
+                return this.salarioRepository;
+            }
+        }
+
 
         public void SaveChanges()
         {

@@ -94,6 +94,7 @@ namespace Test.WebApi
             //-------------- Services ------------------------
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IPermissaoSistemaService, PermissaoSistemaService>();
+            services.AddScoped<IReportService, ReportService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
