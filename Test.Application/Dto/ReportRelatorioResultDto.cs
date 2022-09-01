@@ -13,6 +13,6 @@ namespace Test.Application.Dto
             profits = new List<ProfitDto>();
         }
         public string consultant { get; set; }
-        List<ProfitDto> profits { get; set; }
+        public List<ProfitDto> profits { get; set; }
     }
 }

@@ -38,14 +38,24 @@ namespace Test.Application.src
                                 on f.CoOs equals os.CoOs
                                 where os.CoUsuario == user.CoUsuario && f.DataEmissao.Month == date.Month && f.DataEmissao.Year == date.Year select f;
 
-                    profit.receitaLiquida = query.Count() - query.Sum(d => d.TotalImpInc);
-                    profit.custoFixo = _uow.SalarioRepository.Queryable().Where(d => d.CoUsuario == user.CoUsuario).First().BrutSalario;
+                    profit.receitaLiquida = query.Sum(d => d.Valor - (d.TotalImpInc/100*d.Valor));
+                    if(_uow.SalarioRepository.Queryable().Where(d => d.CoUsuario == user.CoUsuario).Any())
+                    {
+                        profit.custoFixo = _uow.SalarioRepository.Queryable().Where(d => d.CoUsuario == user.CoUsuario).First().BrutSalario;
+                    }
+                    else
+                    {
+                        profit.custoFixo = 0;
+                    }
+                    profit.commissao = query.Sum(d => (d.Valor - (d.TotalImpInc / 100 * d.Valor))* d.ComissaoCn/100);
+                    profit.lucro = profit.receitaLiquida - (profit.commissao + profit.custoFixo);
+                    consultant.profits.Add(profit);
 
-
-                    date.AddMonths(1);
+                    date = date.AddMonths(1);
                 }
+                list.Add(consultant);
             }
-            return new List<ReportRelatorioResultDto>();
+            return list;
         }
 
         public ReportGraficaResultDto GraficaReport(ReportFormDto model)
